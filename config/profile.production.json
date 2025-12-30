@@ -1,0 +1,19 @@
+{
+    "cdp_endpoint": "http://localhost:9222",
+    "match_by": "idsbr",
+    "sheet": 0,
+    "start": null,
+    "end": null,
+    "step_delay": 500,
+    "pause_after_edit": 1500,
+    "pause_after_submit": 600,
+    "max_wait": 6000,
+    "stop_on_error": false,
+    "resume": true,
+    "dry_run": false,
+    "skip_status": false,
+    "status_map": "config/status_map.json",
+    "run_id": null,
+    "keep_runs": 10,
+    "wa_phone": "085892150804"
+}

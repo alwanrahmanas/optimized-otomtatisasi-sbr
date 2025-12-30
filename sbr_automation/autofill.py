@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict
 
@@ -28,6 +29,16 @@ from .utils import (
 
 _ROW_DIVIDER = "=" * 72
 _ROW_SUBDIVIDER = "-" * 72
+
+
+@dataclass
+class AutofillStats:
+    """Statistics from an autofill run."""
+    success_count: int = 0
+    error_count: int = 0
+    skip_count: int = 0
+    recent_errors: list[str] = field(default_factory=list)
+
 
 
 def _format_match_value(ctx: RowContext, match_by: str) -> str:
@@ -102,7 +113,7 @@ async def _log_screenshot(
     return await take_screenshot(page, directory, label)
 
 
-async def process_autofill(options: AutofillOptions, config: RuntimeConfig) -> None:
+async def process_autofill(options: AutofillOptions, config: RuntimeConfig) -> AutofillStats:
     clear_attention_flag(getattr(config, "attention_flag", None))
     contexts, start_display, end_display = load_rows(options, config)
 
@@ -142,6 +153,7 @@ async def process_autofill(options: AutofillOptions, config: RuntimeConfig) -> N
     ok_rows = 0
     skipped_rows = 0
     error_rows = 0
+    recent_errors: list[str] = []  # Track recent errors for WhatsApp notification
 
     async with attach_browser(config) as (_, context):
         page = pick_active_page(context)
@@ -220,6 +232,9 @@ async def process_autofill(options: AutofillOptions, config: RuntimeConfig) -> N
                     )
                 )
                 error_rows += 1
+                # Track error for notification
+                error_msg = f"Baris {ctx.display_index}: CODE:CLICK_EDIT_EXCEPTION"
+                recent_errors.append(error_msg)
                 if options.stop_on_error:
                     break
                 continue
@@ -244,6 +259,9 @@ async def process_autofill(options: AutofillOptions, config: RuntimeConfig) -> N
                     )
                 )
                 error_rows += 1
+                # Track error for notification
+                error_msg = f"Baris {ctx.display_index}: CODE:CLICK_EDIT_TIMEOUT"
+                recent_errors.append(error_msg)
                 if options.stop_on_error:
                     break
                 continue
@@ -586,3 +604,11 @@ async def process_autofill(options: AutofillOptions, config: RuntimeConfig) -> N
             print(
                 f" - Baris {issue.row_index} [{issue.level}/{issue.stage}]: {note}"
             )
+    
+    # Return statistics for WhatsApp notification
+    return AutofillStats(
+        success_count=ok_rows,
+        error_count=error_rows,
+        skip_count=skipped_rows,
+        recent_errors=recent_errors[-5:],  # Keep last 5 errors
+    )

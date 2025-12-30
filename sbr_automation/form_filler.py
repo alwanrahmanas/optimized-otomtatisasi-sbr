@@ -23,7 +23,7 @@ async def update_field(
     field_name: str,
     logger=None,
     *,
-    timeout: int = 2500,
+    timeout: int = 4000,
 ) -> tuple[bool, str]:
     """Isi field hanya jika Excel memiliki nilai."""
     if not nonempty(value):
@@ -69,7 +69,7 @@ async def update_select2_field(
     value: object,
     field_name: str,
     *,
-    timeout: int = 3000,
+    timeout: int = 5000,
 ) -> tuple[bool, str]:
     """Isi select2 (single) dengan cara klik selection, ketik nilai, Enter."""
     if not nonempty(value):
@@ -121,7 +121,7 @@ async def _apply_status(page: Page, ctx: RowContext, config: RuntimeConfig) -> N
     if radio_id:
         radio = page.locator(f"#{radio_id}")
         try:
-            await radio.wait_for(state="attached", timeout=2000)
+            await radio.wait_for(state="attached", timeout=4000)
             try:
                 await radio.check()
             except Exception:
@@ -132,7 +132,7 @@ async def _apply_status(page: Page, ctx: RowContext, config: RuntimeConfig) -> N
     else:
         lbl = page.locator("label").filter(has_text=re.compile(re.escape(ctx.status), re.I)).first
         try:
-            await lbl.wait_for(state="visible", timeout=2000)
+            await lbl.wait_for(state="visible", timeout=4000)
             target_id = await lbl.get_attribute("for")
             if target_id:
                 await page.locator(f"#{target_id}").check()
@@ -163,7 +163,7 @@ async def _fill_phone(page: Page, phone: str) -> None:
             page.get_by_placeholder(re.compile(r"^Nomor\s*Telepon$", re.I))
             .or_(page.locator("input#nomor_telepon, input[name='nomor_telepon'], input[name='no_telp'], input[name='telepon']"))
         ).first
-        await tel_input.wait_for(state="visible", timeout=1500)
+        await tel_input.wait_for(state="visible", timeout=3000)
         if nonempty(phone):
             await tel_input.fill("")
             await tel_input.fill(phone)
@@ -193,7 +193,7 @@ async def _fill_whatsapp(page: Page, whatsapp: str) -> None:
             page.get_by_placeholder(re.compile(r"Whatsapp", re.I))
             .or_(page.locator("input#whatsapp, input[name='whatsapp'], input[name='nomor_whatsapp'], input[name='no_whatsapp']"))
         ).first
-        await wa_input.wait_for(state="visible", timeout=1500)
+        await wa_input.wait_for(state="visible", timeout=3000)
         if nonempty(whatsapp):
             formatted, subscriber = _normalize_wa(whatsapp)
             if not formatted:
@@ -222,7 +222,7 @@ async def _fill_website(page: Page, website: str) -> None:
             page.get_by_placeholder(re.compile(r"Website", re.I))
             .or_(page.locator("input#website, input[name='website']"))
         ).first
-        await web_input.wait_for(state="visible", timeout=1500)
+        await web_input.wait_for(state="visible", timeout=3000)
         if nonempty(website):
             await web_input.fill("")
             await web_input.fill(website)

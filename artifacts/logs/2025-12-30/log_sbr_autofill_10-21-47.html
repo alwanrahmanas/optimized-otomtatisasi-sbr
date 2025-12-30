@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <title>Laporan SBR Automation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; background: #f8f9fa; color: #212529; }
+        h1, h2 { color: #0b7285; }
+        .summary { background: #e3fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; }
+        table { border-collapse: collapse; width: 100%; background: #fff; }
+        th, td { border: 1px solid #dee2e6; padding: 0.5rem; text-align: left; font-size: 0.95rem; }
+        th { background: #0b7285; color: #fff; position: sticky; top: 0; }
+        tr:nth-child(even) { background: #f1f3f5; }
+        a { color: #0b7285; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Laporan Otomatisasi Profiling SBR</h1>
+    <p>Dibuat pada: 2025-12-30 10:26:56</p>
+    <div class="summary">
+        <h2>Ringkasan Level</h2>
+        <ul>
+            <li><strong>OK</strong>: 17</li><li><strong>ERROR</strong>: 10</li>
+        </ul>
+        <p>CSV sumber: <code>log_sbr_autofill_10-21-47.csv</code></p>
+    </div>
+    <h2>Detail Baris</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ts</th>
+      <th>row_index</th>
+      <th>level</th>
+      <th>stage</th>
+      <th>idsbr</th>
+      <th>nama</th>
+      <th>match_value</th>
+      <th>note</th>
+      <th>screenshot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>20251230_102158</td>
+      <td>1</td>
+      <td>OK</td>
+      <td>OPEN_TAB</td>
+      <td>97516601</td>
+      <td>KONTRAKTOR AZRIN ZABUR, CV</td>
+      <td>0</td>
+      <td>Tab form baru terdeteksi (event page).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102220</td>
+      <td>1</td>
+      <td>OK</td>
+      <td>FILL</td>
+      <td>97516601</td>
+      <td>KONTRAKTOR AZRIN ZABUR, CV</td>
+      <td>0</td>
+      <td>Form terisi (update=9, skip=8)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102227</td>
+      <td>1</td>
+      <td>ERROR</td>
+      <td>SUBMIT</td>
+      <td>97516601</td>
+      <td>KONTRAKTOR AZRIN ZABUR, CV</td>
+      <td>0</td>
+      <td>ERROR_FILL | CODE:SUBMIT_ERROR_FILL Form menolak submit karena ada isian yang perlu diperbaiki. | Pesan: Masih terdapat isian yang harus diperbaiki! | Petunjuk: Pemberitahuan, Masih terdapat isian yang harus diperbaiki!, *, Salah satu opsi harus terpilih, Belum ada idsbr master yang terkonfimasi!</td>
+      <td><a href="../../screenshots/2025-12-30/20251230_102222_submit_issue_1_ERROR_FILL.png">20251230_102222_submit_issue_1_ERROR_FILL.png</a></td>
+    </tr>
+    <tr>
+      <td>20251230_102235</td>
+      <td>2</td>
+      <td>OK</td>
+      <td>OPEN_TAB</td>
+      <td>97516602</td>
+      <td>KOPERASI SERBA USAHA</td>
+      <td>1</td>
+      <td>Tab form baru terdeteksi (fallback buka href).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102248</td>
+      <td>2</td>
+      <td>ERROR</td>
+      <td>FILL</td>
+      <td>97516602</td>
+      <td>KOPERASI SERBA USAHA</td>
+      <td>1</td>
+      <td>Exception isi form: TargetClosedError: Page.wait_for_timeout: Target page, context or browser has been closed (screenshot-error: Page.screenshot: Target page, context or browser has been closed)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102304</td>
+      <td>3</td>
+      <td>ERROR</td>
+      <td>OPEN_TAB</td>
+      <td>97516604</td>
+      <td>AYUMI CIPTA SARANA, CV</td>
+      <td>2</td>
+      <td>Tidak ada tab form: TimeoutError: Timeout 6000ms exceeded while waiting for event "page" | URL tidak berubah</td>
+      <td><a href="../../screenshots/2025-12-30/20251230_102303_no_new_tab_3.png">20251230_102303_no_new_tab_3.png</a></td>
+    </tr>
+    <tr>
+      <td>20251230_102309</td>
+      <td>4</td>
+      <td>OK</td>
+      <td>OPEN_TAB</td>
+      <td>97516605</td>
+      <td>KOPERASI BERKAH SEJATI</td>
+      <td>3</td>
+      <td>Tab form baru terdeteksi (event page).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102347</td>
+      <td>4</td>
+      <td>OK</td>
+      <td>FILL</td>
+      <td>97516605</td>
+      <td>KOPERASI BERKAH SEJATI</td>
+      <td>3</td>
+      <td>Form terisi (update=8, skip=9)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102401</td>
+      <td>4</td>
+      <td>ERROR</td>
+      <td>SUBMIT</td>
+      <td>97516605</td>
+      <td>KOPERASI BERKAH SEJATI</td>
+      <td>3</td>
+      <td>ERROR_FILL | CODE:SUBMIT_ERROR_FILL Form menolak submit karena ada isian yang perlu diperbaiki. | Pesan: Masih terdapat isian yang harus diperbaiki! | Petunjuk: Pemberitahuan, Masih terdapat isian yang harus diperbaiki!, *, Salah satu opsi harus terpilih, Belum ada idsbr master yang terkonfimasi!</td>
+      <td><a href="../../screenshots/2025-12-30/20251230_102357_submit_issue_4_ERROR_FILL.png">20251230_102357_submit_issue_4_ERROR_FILL.png</a></td>
+    </tr>
+    <tr>
+      <td>20251230_102407</td>
+      <td>5</td>
+      <td>OK</td>
+      <td>OPEN_TAB</td>
+      <td>97516614</td>
+      <td>SETIA KAWAN UD</td>
+      <td>4</td>
+      <td>Tab form baru terdeteksi (event page).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102426</td>
+      <td>5</td>
+      <td>OK</td>
+      <td>FILL</td>
+      <td>97516614</td>
+      <td>SETIA KAWAN UD</td>
+      <td>4</td>
+      <td>Form terisi (update=8, skip=9)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102428</td>
+      <td>5</td>
+      <td>ERROR</td>
+      <td>SUBMIT</td>
+      <td>97516614</td>
+      <td>SETIA KAWAN UD</td>
+      <td>4</td>
+      <td>ERROR_FILL | CODE:SUBMIT_ERROR_FILL Form menolak submit karena ada isian yang perlu diperbaiki. | Pesan: Masih terdapat isian yang harus diperbaiki! | Petunjuk: Pemberitahuan, Masih terdapat isian yang harus diperbaiki!, *, Salah satu opsi harus terpilih, Belum ada idsbr master yang terkonfimasi!</td>
+      <td><a href="../../screenshots/2025-12-30/20251230_102427_submit_issue_5_ERROR_FILL.png">20251230_102427_submit_issue_5_ERROR_FILL.png</a></td>
+    </tr>
+    <tr>
+      <td>20251230_102432</td>
+      <td>6</td>
+      <td>OK</td>
+      <td>OPEN_TAB</td>
+      <td>97516615</td>
+      <td>TRAVEL(ASDIN SATRIA)</td>
+      <td>5</td>
+      <td>Tab form baru terdeteksi (event page).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102454</td>
+      <td>6</td>
+      <td>OK</td>
+      <td>FILL</td>
+      <td>97516615</td>
+      <td>TRAVEL(ASDIN SATRIA)</td>
+      <td>5</td>
+      <td>Form terisi (update=8, skip=9)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102455</td>
+      <td>6</td>
+      <td>ERROR</td>
+      <td>SUBMIT</td>
+      <td>97516615</td>
+      <td>TRAVEL(ASDIN SATRIA)</td>
+      <td>5</td>
+      <td>ERROR_FILL | CODE:SUBMIT_ERROR_FILL Form menolak submit karena ada isian yang perlu diperbaiki. | Pesan: Masih terdapat isian yang harus diperbaiki! | Petunjuk: Pemberitahuan, Masih terdapat isian yang harus diperbaiki!, *, Salah satu opsi harus terpilih, Belum ada idsbr master yang terkonfimasi!</td>
+      <td><a href="../../screenshots/2025-12-30/20251230_102454_submit_issue_6_ERROR_FILL.png">20251230_102454_submit_issue_6_ERROR_FILL.png</a></td>
+    </tr>
+    <tr>
+      <td>20251230_102500</td>
+      <td>7</td>
+      <td>OK</td>
+      <td>OPEN_TAB</td>
+      <td>97516609</td>
+      <td>TOKO FURNITURE (SAKARIA)</td>
+      <td>6</td>
+      <td>Tab form baru terdeteksi (event page).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102520</td>
+      <td>7</td>
+      <td>OK</td>
+      <td>FILL</td>
+      <td>97516609</td>
+      <td>TOKO FURNITURE (SAKARIA)</td>
+      <td>6</td>
+      <td>Form terisi (update=8, skip=9)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102522</td>
+      <td>7</td>
+      <td>ERROR</td>
+      <td>SUBMIT</td>
+      <td>97516609</td>
+      <td>TOKO FURNITURE (SAKARIA)</td>
+      <td>6</td>
+      <td>ERROR_FILL | CODE:SUBMIT_ERROR_FILL Form menolak submit karena ada isian yang perlu diperbaiki. | Pesan: Masih terdapat isian yang harus diperbaiki! | Petunjuk: Pemberitahuan, Masih terdapat isian yang harus diperbaiki!, *, Salah satu opsi harus terpilih, Belum ada idsbr master yang terkonfimasi!</td>
+      <td><a href="../../screenshots/2025-12-30/20251230_102521_submit_issue_7_ERROR_FILL.png">20251230_102521_submit_issue_7_ERROR_FILL.png</a></td>
+    </tr>
+    <tr>
+      <td>20251230_102526</td>
+      <td>8</td>
+      <td>OK</td>
+      <td>OPEN_TAB</td>
+      <td>97516610</td>
+      <td>ARWAN, UD</td>
+      <td>7</td>
+      <td>Tab form baru terdeteksi (event page).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102551</td>
+      <td>8</td>
+      <td>OK</td>
+      <td>FILL</td>
+      <td>97516610</td>
+      <td>ARWAN, UD</td>
+      <td>7</td>
+      <td>Form terisi (update=9, skip=8)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102553</td>
+      <td>8</td>
+      <td>ERROR</td>
+      <td>SUBMIT</td>
+      <td>97516610</td>
+      <td>ARWAN, UD</td>
+      <td>7</td>
+      <td>ERROR_FILL | CODE:SUBMIT_ERROR_FILL Form menolak submit karena ada isian yang perlu diperbaiki. | Pesan: Masih terdapat isian yang harus diperbaiki! | Petunjuk: Pemberitahuan, Masih terdapat isian yang harus diperbaiki!, *, Salah satu opsi harus terpilih, Belum ada idsbr master yang terkonfimasi!</td>
+      <td><a href="../../screenshots/2025-12-30/20251230_102552_submit_issue_8_ERROR_FILL.png">20251230_102552_submit_issue_8_ERROR_FILL.png</a></td>
+    </tr>
+    <tr>
+      <td>20251230_102558</td>
+      <td>9</td>
+      <td>OK</td>
+      <td>OPEN_TAB</td>
+      <td>97516606</td>
+      <td>KONSULTAN SURYA ABADI PT</td>
+      <td>8</td>
+      <td>Tab form baru terdeteksi (event page).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102624</td>
+      <td>9</td>
+      <td>OK</td>
+      <td>FILL</td>
+      <td>97516606</td>
+      <td>KONSULTAN SURYA ABADI PT</td>
+      <td>8</td>
+      <td>Form terisi (update=8, skip=9)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102626</td>
+      <td>9</td>
+      <td>ERROR</td>
+      <td>SUBMIT</td>
+      <td>97516606</td>
+      <td>KONSULTAN SURYA ABADI PT</td>
+      <td>8</td>
+      <td>ERROR_FILL | CODE:SUBMIT_ERROR_FILL Form menolak submit karena ada isian yang perlu diperbaiki. | Pesan: Masih terdapat isian yang harus diperbaiki! | Petunjuk: Pemberitahuan, Masih terdapat isian yang harus diperbaiki!, *, Salah satu opsi harus terpilih, Belum ada idsbr master yang terkonfimasi!</td>
+      <td><a href="../../screenshots/2025-12-30/20251230_102625_submit_issue_9_ERROR_FILL.png">20251230_102625_submit_issue_9_ERROR_FILL.png</a></td>
+    </tr>
+    <tr>
+      <td>20251230_102630</td>
+      <td>10</td>
+      <td>OK</td>
+      <td>OPEN_TAB</td>
+      <td>97516607</td>
+      <td>KARAOKE KELUARGA (ACO)</td>
+      <td>9</td>
+      <td>Tab form baru terdeteksi (event page).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102654</td>
+      <td>10</td>
+      <td>OK</td>
+      <td>FILL</td>
+      <td>97516607</td>
+      <td>KARAOKE KELUARGA (ACO)</td>
+      <td>9</td>
+      <td>Form terisi (update=8, skip=9)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20251230_102656</td>
+      <td>10</td>
+      <td>ERROR</td>
+      <td>SUBMIT</td>
+      <td>97516607</td>
+      <td>KARAOKE KELUARGA (ACO)</td>
+      <td>9</td>
+      <td>ERROR_FILL | CODE:SUBMIT_ERROR_FILL Form menolak submit karena ada isian yang perlu diperbaiki. | Pesan: Masih terdapat isian yang harus diperbaiki! | Petunjuk: Pemberitahuan, Masih terdapat isian yang harus diperbaiki!, *, Salah satu opsi harus terpilih, Belum ada idsbr master yang terkonfimasi!</td>
+      <td><a href="../../screenshots/2025-12-30/20251230_102655_submit_issue_10_ERROR_FILL.png">20251230_102655_submit_issue_10_ERROR_FILL.png</a></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

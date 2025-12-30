@@ -44,6 +44,8 @@ def parse_args() -> argparse.Namespace:
         "selectors",
         "run_id",
         "keep_runs",
+        "wa_phone",
+        "no_wa_notify",
     }
     profile_defaults = load_profile_defaults(initial.profile, allowed_profile_keys)
 
@@ -88,6 +90,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--resume", action="store_true", help="Lewati baris yang sebelumnya berstatus OK di log")
     parser.add_argument("--run-id", help="Gunakan run ID khusus (huruf/angka/-/_) untuk folder artefak")
     parser.add_argument("--keep-runs", type=int, help="Batasi jumlah folder run yang dipertahankan (default 10)")
+    parser.add_argument("--wa-phone", help="Nomor WhatsApp penerima notifikasi (format: 081234567890)")
+    parser.add_argument("--no-wa-notify", action="store_true", help="Nonaktifkan notifikasi WhatsApp")
     return parser.parse_args(remaining)
 
 
@@ -133,7 +137,20 @@ def build_options(args: argparse.Namespace, working_dir: Path) -> tuple[Autofill
 def main() -> None:
     args = parse_args()
     options, config = build_options(args, Path.cwd())
-    asyncio.run(process_autofill(options, config))
+    stats = asyncio.run(process_autofill(options, config))
+    
+    # Send WhatsApp notification if enabled
+    if stats and not args.dry_run:
+        from sbr_automation.whatsapp_notifier import notify_autofill_complete
+        
+        log_filename = f"log_sbr_autofill_{config.run_id}.csv"
+        notify_autofill_complete(
+            phone_number=args.wa_phone,
+            stats=stats,
+            run_id=config.run_id,
+            log_filename=log_filename,
+            enabled=not args.no_wa_notify,
+        )
 
 
 if __name__ == "__main__":

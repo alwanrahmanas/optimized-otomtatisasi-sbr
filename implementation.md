@@ -3,36 +3,40 @@
 ## 📁 Struktur Folder Anda
 
 ```
-C:\Users\Acer\Documents\sbr-otomatis\otomatisasisbr-6502\
-├── sbr_fill.py                          ← Entry point (REPLACE dengan versi optimized)
+OPTIMIZED-OTOMATISASISBR/
+├── .venv/
 ├── config/
-│   ├── profile.example.json            ← Template (UPDATE)
-│   ├── profile.optimized.json          ← BARU: Profile dengan setting optimal
-│   ├── profile.production.json         ← BARU: Profile production siap pakai
-│   └── status_map.json                 ← Existing (tidak diubah)
-├── sbr_automation/
-│   ├── __init__.py
-│   ├── autofill.py                     ← REPLACE dengan versi optimized
-│   ├── form_filler.py                  ← REPLACE dengan versi optimized
-│   ├── playwright_helpers.py           ← REPLACE dengan versi optimized
-│   ├── whatsapp_notifier.py            ← BARU: Module notifikasi WA
-│   ├── config.py                       ← Existing (tidak diubah)
-│   ├── excel_loader.py                 ← Existing (tidak diubah)
-│   ├── field_selectors.py              ← Existing (tidak diubah)
-│   ├── logbook.py                      ← Existing (tidak diubah)
-│   ├── loader.py                       ← Existing (tidak diubah)
-│   ├── models.py                       ← Existing (tidak diubah)
-│   ├── navigator.py                    ← Existing (tidak diubah)
-│   ├── resume.py                       ← Existing (tidak diubah)
-│   ├── submitter.py                    ← Existing (tidak diubah)
-│   ├── table_actions.py                ← Existing (tidak diubah)
-│   └── utils.py                        ← Existing (tidak diubah)
+│   ├── profile.example.json     ← UPDATE (tambah wa_phone & timing optimal)
+│   ├── profile.production.json  ← BARU (clean production config)
+│   └── status_map.json          ← Tidak diubah
 ├── data/
-│   └── SBR Wandaka Fix.xlsx            ← Your Excel file
-└── artifacts/
-    ├── logs/
-    ├── screenshots/
-    └── screenshots_cancel/
+│   └── SBR Wandaka Fix.xlsx
+├── sbr_automation/
+│   ├── __pycache__/
+│   ├── __init__.py
+│   ├── autofill.py              ← REPLACE (return value)
+│   ├── cancel.py                ← Tidak diubah
+│   ├── config.py                ← Tidak diubah
+│   ├── excel_loader.py          ← Tidak diubah
+│   ├── field_selectors.py       ← Tidak diubah
+│   ├── form_filler.py           ← REPLACE (parallel + timeout 50% lebih pendek)
+│   ├── loader.py                ← Tidak diubah
+│   ├── logbook.py               ← Tidak diubah
+│   ├── models.py                ← Tidak diubah
+│   ├── navigator.py             ← Tidak diubah
+│   ├── playwright_helpers.py    ← REPLACE (slow_pause 70% lebih cepat)
+│   ├── resume.py                ← Tidak diubah
+│   ├── submitter.py             ← Tidak diubah
+│   ├── table_actions.py         ← Tidak diubah
+│   ├── utils.py                 ← Tidak diubah
+│   └── whatsapp_notifier.py     ← SUDAH ADA ✅
+├── tests/
+├── .gitignore
+├── pyproject.toml
+├── README.md
+├── requirements.txt
+├── sbr_cancel.py
+└── sbr_fill.py                  ← REPLACE (dengan WA notification)
 ```
 
 ---

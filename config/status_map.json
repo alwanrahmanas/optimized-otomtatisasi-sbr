@@ -1,0 +1,13 @@
+{
+  "Aktif": "kondisi_aktif",
+  "Tutup Sementara": "kondisi_tutup_sementara",
+  "Belum Beroperasi/Berproduksi": "kondisi_belum_beroperasi_berproduksi",
+  "Tutup": "kondisi_tutup",
+  "Alih Usaha": "kondisi_alih_usaha",
+  "Tidak Ditemukan": "kondisi_tidak_ditemukan",
+  "Aktif Pindah": "kondisi_aktif_pindah",
+  "Aktif Nonrespon": "kondisi_aktif_nonrespon",
+  "Duplikat": "kondisi_duplikat",
+  "Salah Kode Wilayah": "kondisi_salah_kode_wilayah"
+}
+
